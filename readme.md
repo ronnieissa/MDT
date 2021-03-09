@@ -9,6 +9,11 @@ Step by step setting up an imaging system.
   
   Do the actual Conversion
     dism /export-image /SourceImageFile:install.esd /SourceIndex:1 /DestinationImageFile:install.wim /Compress:max /CheckIntegrity
+    
+  Import the WIM file into the deployment share
+    Import-Module "C:\Program Files\Microsoft Deployment Toolkit\bin\MicrosoftDeploymentToolkit.psd1"
+    New-PSDrive -Name "DS001" -PSProvider MDTProvider -Root "C:\DeploymentShare"
+    import-mdtoperatingsystem -path "DS001:\Operating Systems" -SourceFile "C:\win10.wim" -DestinationFolder "win10" -Move -Verbose
 
 2. Drivers
   first install an image and update the physical hardware to the latest firmware.
@@ -17,4 +22,4 @@ Step by step setting up an imaging system.
   Export the drivers to be used in the MDT image.
     export-windowsdriver
  
- 3.
+ 3. Import the w
