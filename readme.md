@@ -1,7 +1,13 @@
 Step by step setting up an imaging system.
 
-
-1. Get an install.wim file. (this is the image that will be deployed via MDT/WDS)
+To capture an updated and clean OS from a VM disk.
+  Mount the vm Disk on the host OS.
+  Run this command
+    dism /capture-image /imagefile:<imag-path> /capturedir:<source_drive> /name:<name> /description:<description>
+  
+ IF USING ISO, see below
+  
+ 1. Get an install.wim file. (this is the image that will be deployed via MDT/WDS)
   you can do this by grabbing the D:\sources\install.esd from a win10 iso and converting it with teh dism tool
   
   View the index you want with 
